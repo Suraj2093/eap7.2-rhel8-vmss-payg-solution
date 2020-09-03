@@ -47,7 +47,7 @@
     "value": "jbosseap-rhel8-payg-vmss1-ip"
   },
   "publicIpDns": {
-    "value": "jbosseap-rhel8-payg-vmss1-582b72984b"
+    "value": "jbosseap-rhel8-payg-vmss1-8f78c9fa7f"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
@@ -59,7 +59,7 @@
     "value": "new"
   },
   "storageAccountName": {
-    "value": "jbosseapa955054ac6"
+    "value": "jbosseap8c9f3ea855"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
