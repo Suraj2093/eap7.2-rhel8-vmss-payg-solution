@@ -5,26 +5,26 @@
     "parameters": {
         "basics": [
             {
-                "name": "vmName",
+                "name": "vmssName",
                 "type": "Microsoft.Common.TextBox",
-                "label": "Virtual Machine name",
-                "toolTip": "The name of the Virtual Machine",
+                "label": "Virtual Machine Scale Set name",
+                "toolTip": "The name of the Virtual Machine Scale Set",
                 "constraints": {
                     "required": true,
-                    "regex": "^[a-z0-9A-Z-]{3,79}$",
-                    "validationMessage": "The VM Name must be between 3 and 79 characters long and contain letters, numbers and hyphens only."
+                    "regex": "^[a-z0-9A-Z-]{1,64}$",
+                    "validationMessage": "The VMSS Name must be between 1 and 64 characters long and contain letters, numbers and hyphens only."
                 }
             },
             {
                 "name": "adminUsername",
                 "type": "Microsoft.Compute.UserNameTextBox",
                 "label": "Username",
-                "toolTip": "Linux VM user account name",
+                "toolTip": "Linux VMSS instance user account name",
                 "osPlatform": "Linux",
                 "constraints": {
                     "required": true,
                     "regex": "^[a-zA-Z]+[a-zA-Z0-9_-]{1,64}$",
-                    "validationMessage": "The value must be between 1 and 64 characters long."
+                    "validationMessage": "The value must be between 1 and 64 characters long and must only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number."
                 }
             },
             {
@@ -52,19 +52,19 @@
         ],
         "steps": [
             {
-                "name": "VirtualMachineConfig",
-                "label": "Virtual Machine Settings",
+                "name": "VirtualMachineScaleSetConfig",
+                "label": "Virtual Machine Scale Set Settings",
                 "subLabel": {
-                    "preValidation": "Configure the virtual machine's resources and settings",
+                    "preValidation": "Configure the virtual machine scale set resources and settings",
                     "postValidation": "Done"
                 },
-                "bladeTitle": "Virtual Machine Settings",
+                "bladeTitle": "Virtual Machine Scale Set Settings",
                 "elements": [
                     {
                         "name": "vmSize",
                         "type": "Microsoft.Compute.SizeSelector",
-                        "label": "Virtual machine size",
-                        "toolTip": "The size of virtual machine to provision",
+                        "label": "Virtual machine scale set instance size",
+                        "toolTip": "The size of virtual machine scale set instance to provision",
                         "recommendedSizes": [
                             "Standard_DS2_v2",
                             "Standard_DS3_v2",
@@ -78,6 +78,18 @@
                         ],
                         "osPlatform": "Linux",
                         "count": "1"
+                    },
+                    {
+                        "name": "instanceCount",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Number of Virtual Machine Scale Set instance count",
+                        "toolTip": "Number of Virtual Machine Scale Set instance count (less than 100)",
+                        "defaultValue": "2",
+                        "constraints": {
+                            "required": true,
+                            "regex": "^[0-9]{1,2}$",
+                            "validationMessage": "The VMSS instance count must be an integer value less than 100."
+                        }
                     },
                     {
                         "name": "virtualNetwork",
@@ -124,8 +136,8 @@
                             "domainNameLabel": "DNS Prefix for the public IP Address, must be globally unique"
                         },
                         "defaultValue": {
-                            "publicIpAddressName": "[concat(basics('vmName'), '-ip')]",
-                            "domainNameLabel": "[concat(basics('vmName'), '-', take(replace(guid(), '-', ''), 10))]"
+                            "publicIpAddressName": "[concat(basics('vmssName'), '-ip')]",
+                            "domainNameLabel": "[concat(basics('vmssName'), '-', take(replace(guid(), '-', ''), 10))]"
                         },
                         "options": {
                             "hideExisting": false,
@@ -142,7 +154,7 @@
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Boot diagnostics",
                         "defaultValue": "On",
-                        "toolTip": "Capture serial console outputs and screenshots of the virtual machine running on a host to help diagnose startup issues",
+                        "toolTip": "Capture serial console outputs and screenshots of the VMSS instance running on a host to help diagnose startup issues",
                         "constraints": {
                           "allowedValues": [
                             {
@@ -163,10 +175,10 @@
                         "type": "Microsoft.Storage.StorageAccountSelector",
                         "label": "Diagnostic storage account",
                         "toolTip": "Storage Account for the Virtual Machine's diagnostics",
-                        "visible": "[equals(steps('VirtualMachineConfig').bootDiagnostics, 'On')]",
+                        "visible": "[equals(steps('VirtualMachineScaleSetConfig').bootDiagnostics, 'On')]",
                         "defaultValue": {
                             "type": "Standard_LRS",
-                            "name": "[concat(take(replace(basics('vmName'), '-', ''), 8), take(replace(guid(), '-', ''), 10))]"
+                            "name": "[concat(take(replace(basics('vmssName'), '-', ''), 8), take(replace(guid(), '-', ''), 10))]"
                         },
                         "constraints": {
                             "allowedTypes": [
@@ -174,6 +186,39 @@
                                 "Standard_GRS"
                             ]
                         }
+                    },
+                    {
+                        "name": "storageReplication",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Storage replication type of the Storage account used for clustering",
+                        "defaultValue": "Standard_LRS",
+                        "toolTip": "Select the Storage Replication Strategy for the Storage account used for clustering",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Locally-redundant Storage (LRS)",
+                                    "value": "Standard_LRS"
+                                },
+                                {
+                                    "label": "Zone-redundant Storage (ZRS)",
+                                    "value": "Standard_ZRS"
+                                },
+                                {
+                                    "label": "Geo-redundant Storage (GRS)",
+                                    "value": "Standard_GRS"
+                                },
+                                {
+                                    "label": "Read-Access geo-redundant Storage (RAGRS)",
+                                    "value": "Standard_RAGRS"
+                                },
+                                {
+                                    "label": "Locally-redundant Storage (Premium_LRS)",
+                                    "value": "Premium_LRS"
+                                }
+                            ],
+                            "required": true
+                        },
+                        "visible": true
                     }
                 ]
             },
@@ -255,30 +300,32 @@
         "outputs": {
 
             "location": "[location()]",
-            "vmName": "[basics('vmName')]",
+            "vmssName": "[basics('vmssName')]",
             "adminUsername": "[basics('adminUsername')]",
             "authenticationType": "[basics('authenticationType').authenticationType]",
             "adminPasswordOrSSHKey": "[coalesce(basics('authenticationType').password, basics('authenticationType').sshPublicKey)]",
 
-            "vmSize": "[steps('VirtualMachineConfig').vmSize]",
-            "virtualNetworkNewOrExisting": "[steps('VirtualMachineConfig').virtualNetwork.newOrExisting]",
-            "virtualNetworkName": "[steps('VirtualMachineConfig').virtualNetwork.name]",
-            "addressPrefixes": "[steps('VirtualMachineConfig').virtualNetwork.addressPrefixes]",
-            "subnetName": "[steps('VirtualMachineConfig').virtualNetwork.subnets.subnet1.name]",
-            "subnetPrefix": "[steps('VirtualMachineConfig').virtualNetwork.subnets.subnet1.addressPrefix]",
-            "virtualNetworkResourceGroupName": "[steps('VirtualMachineConfig').virtualNetwork.resourceGroup]",
+            "vmSize": "[steps('VirtualMachineScaleSetConfig').vmSize]",
+            "instanceCount" : "[steps('VirtualMachineScaleSetConfig').instanceCount]",
+            "virtualNetworkNewOrExisting": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.newOrExisting]",
+            "virtualNetworkName": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.name]",
+            "addressPrefixes": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.addressPrefixes]",
+            "subnetName": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.subnets.subnet1.name]",
+            "subnetPrefix": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.subnets.subnet1.addressPrefix]",
+            "virtualNetworkResourceGroupName": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.resourceGroup]",
 
-            "publicIpNewOrExisting": "[steps('VirtualMachineConfig').publicIpAddress.newOrExistingOrNone]",
-            "publicIpName": "[steps('VirtualMachineConfig').publicIpAddress.name]",
-            "publicIpDns": "[steps('VirtualMachineConfig').publicIpAddress.domainNameLabel]",
-            "publicIpResourceGroupName": "[steps('VirtualMachineConfig').publicIpAddress.resourceGroup]",
-            "publicIPAllocationMethod": "[steps('VirtualMachineConfig').publicIpAddress.publicIPAllocationMethod]",
-            "publicIpSku": "[steps('VirtualMachineConfig').publicIpAddress.sku]",
+            "publicIpNewOrExisting": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.newOrExistingOrNone]",
+            "publicIpName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.name]",
+            "publicIpDns": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.domainNameLabel]",
+            "publicIpResourceGroupName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.resourceGroup]",
+            "publicIPAllocationMethod": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.publicIPAllocationMethod]",
+            "publicIpSku": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.sku]",
 
-            "bootDiagnostics": "[steps('VirtualMachineConfig').bootDiagnostics]",
-            "storageNewOrExisting": "[steps('VirtualMachineConfig').storageAccountType.newOrExisting]",
-            "storageAccountName": "[steps('VirtualMachineConfig').storageAccountType.name]",
-            "storageAccountType": "[steps('VirtualMachineConfig').storageAccountType.type]",
+            "bootDiagnostics": "[steps('VirtualMachineScaleSetConfig').bootDiagnostics]",
+            "storageNewOrExisting": "[steps('VirtualMachineScaleSetConfig').storageAccountType.newOrExisting]",
+            "storageAccountName": "[steps('VirtualMachineScaleSetConfig').storageAccountType.name]",
+            "storageAccountType": "[steps('VirtualMachineScaleSetConfig').storageAccountType.type]",
+            "storageReplication": "[steps('VirtualMachineScaleSetConfig').storageReplication]",
             
             "jbossEAPUserName": "[steps('jbossEAPSettings').jbossEAPUserName]",
             "jbossEAPPassword": "[steps('jbossEAPSettings').jbossEAPPassword]",
