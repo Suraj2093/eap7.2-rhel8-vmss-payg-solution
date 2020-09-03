@@ -84,7 +84,6 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Number of Virtual Machine Scale Set instance count",
                         "toolTip": "Number of Virtual Machine Scale Set instance count (less than 100)",
-                        "defaultValue": 2,
                         "constraints": {
                             "required": true,
                             "regex": "^[0-9]{1,2}$",
