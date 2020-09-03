@@ -18,7 +18,7 @@
     "value": "Standard_DS2_v2"
   },
   "instanceCount": {
-    "value": "2"
+    "value": 2
   },
   "virtualNetworkNewOrExisting": {
     "value": "new"
@@ -47,7 +47,7 @@
     "value": "jbosseap-rhel8-payg-vmss1-ip"
   },
   "publicIpDns": {
-    "value": "jbosseap-rhel8-payg-vmss1-8f78c9fa7f"
+    "value": "jbosseap-rhel8-payg-vmss1-c994ef93ed"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
@@ -59,7 +59,7 @@
     "value": "new"
   },
   "storageAccountName": {
-    "value": "jbosseap8c9f3ea855"
+    "value": "jbosseapfd5a4b227b"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
