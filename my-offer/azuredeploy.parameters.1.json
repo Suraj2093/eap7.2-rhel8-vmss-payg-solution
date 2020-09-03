@@ -49,9 +49,6 @@
   "publicIpDns": {
     "value": "jbosseap-rhel8-payg-vmss1-582b72984b"
   },
-  "publicIpResourceGroupName": {
-    "value": "EAP72-RHEL8-VMSS-payg-Soln-Test-Rg1"
-  },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
   },
