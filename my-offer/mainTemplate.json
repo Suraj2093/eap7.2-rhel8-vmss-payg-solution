@@ -46,7 +46,7 @@
             }
         },
         "instanceCount": {
-            "type": "int",
+            "type": "String",
             "metadata": {
                 "description": "Number of VM instances (less than 100)"
             }
