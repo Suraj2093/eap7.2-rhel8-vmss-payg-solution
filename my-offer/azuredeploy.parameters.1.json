@@ -1,9 +1,9 @@
 {
   "location": {
-    "value": "eastus2"
+    "value": "eastus"
   },
   "vmssName": {
-    "value": "jbosseap-rhel8-payg-vmss1"
+    "value": "jbosseap-rhel8-payg-vmss3"
   },
   "adminUsername": {
     "value": "demouser"
@@ -15,16 +15,16 @@
     "value": "demoPassword1!"
   },
   "vmSize": {
-    "value": "Standard_DS2_v2"
+    "value": "Standard_F4s_v2"
   },
   "instanceCount": {
-    "value": "2"
+    "value": "3"
   },
   "virtualNetworkNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "virtualNetworkName": {
-    "value": "VirtualNetwork"
+    "value": "EXT-RHEL8-VMSS-VNET1"
   },
   "addressPrefixes": {
     "value": [
@@ -32,34 +32,40 @@
     ]
   },
   "subnetName": {
-    "value": "Subnet-1"
+    "value": "EXT-RHEL8-VMSS-subnet1"
   },
   "subnetPrefix": {
-    "value": "10.3.0.0/24"
+    "value": "10.3.1.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "EAP72-RHEL8-VMSS-payg-Soln-Test-Rg1"
+    "value": "Ext-strg-vnet-pip-Rg1"
   },
   "publicIpNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "publicIpName": {
-    "value": "jbosseap-rhel8-payg-vmss1-ip"
+    "value": "EXT-eap72-rhek8-vmss-pip1"
   },
   "publicIpDns": {
-    "value": "jbosseap-rhel8-payg-vmss1-6c23234d74"
+    "value": "ext-eap72-rhek8-vmss-pip1"
+  },
+  "publicIpResourceGroupName": {
+    "value": "Ext-strg-vnet-pip-Rg1"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
+  },
+  "publicIpSku": {
+    "value": "Basic"
   },
   "bootDiagnostics": {
     "value": "On"
   },
   "storageNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "storageAccountName": {
-    "value": "jbosseap71ff21ebf8"
+    "value": "strgdiagvmss"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
