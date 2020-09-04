@@ -1,67 +1,73 @@
 {
   "location": {
-    "value": "southcentralus"
+    "value": "eastus"
   },
-  "vmName": {
-    "value": "jbosseap-rhel8-payg-vm4"
+  "vmssName": {
+    "value": "jbosseap-rhel8-payg-vmss2"
   },
   "adminUsername": {
     "value": "demouser"
   },
   "authenticationType": {
-    "value": "sshPublicKey"
+    "value": "password"
   },
   "adminPasswordOrSSHKey": {
-    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsvQd8Ie4w+cl4irCajWjEnfoa+XQ+c0z7O/ruFEPbOD2Gt4tU9XwoPWVS1ehAziAg8qzKHEZ0gPvSAwIVFqXkxsI3cofl1U7/aU0ELipbc4u/gqj/gDn3WS9Y2w4iGU3/4ifPZYOL5nN9lGS2ixz3Xp7wX22/L8H2RdAKnQYKdS+eWYy/RCTvc1CAXphvEXEDFYp0m0KE9VxBSXNHsvdCI8DyUjQWvNRgKRQowUSAvwZBBH6YlXqQhyPCEDFfcriwTKZ9e56DzulIHjgm35Oucs7Mdx1L0+0/eoZ1CM5TxwfXec1YVGjz+9jgb8GGe+9H06yvFsjAUbJ70dj9UXIDw=="
+    "value": "demoPassword1!"
   },
   "vmSize": {
-    "value": "Standard_DS2_v2"
+    "value": "Standard_E4s_v3"
+  },
+  "instanceCount": {
+    "value": "3"
   },
   "virtualNetworkNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "virtualNetworkName": {
-    "value": "VirtualNetwork"
+    "value": "EXT-RHEL8-VMSS-VNET1"
   },
   "addressPrefixes": {
     "value": [
-      "10.5.0.0/16"
+      "10.3.0.0/16"
     ]
   },
   "subnetName": {
-    "value": "Subnet-1"
+    "value": "EXT-RHEL8-VMSS-subnet1"
   },
   "subnetPrefix": {
-    "value": "10.5.0.0/24"
+    "value": "10.3.1.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-Soln-Test-Rg4"
+    "value": "Ext-strg-vnet-pip-Rg1"
   },
   "publicIpNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "publicIpName": {
-    "value": "jbosseap-rhel8-payg-vm4-ip"
+    "value": "EXT-eap72-rhek8-vmss-pip1"
   },
   "publicIpDns": {
-    "value": "jbosseap-rhel8-payg-vm4-377ab7238d"
-  },
-  "publicIpResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-Soln-Test-Rg4"
+    "value": "ext-eap72-rhek8-vmss-pip1"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
+  },
+  "publicIpSku": {
+    "value": "Basic"
   },
   "bootDiagnostics": {
     "value": "On"
   },
   "storageNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "storageAccountName": {
-    "value": "jbosseapf6bc7646df"
+    "value": "strgdiagvmss"
   },
   "storageAccountType": {
+    "value": "Standard_LRS"
+  },
+  "storageReplication": {
     "value": "Standard_LRS"
   },
   "jbossEAPUserName": {
@@ -77,6 +83,6 @@
     "value": "Spektra@123"
   },
   "rhsmPoolEAP": {
-    "value": "8a85f996710f3b1801716f5db33b3f5q"
+    "value": "8a85f99972762fce017299694421706b"
   }
 }
