@@ -316,7 +316,7 @@
             "publicIpNewOrExisting": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.newOrExistingOrNone]",
             "publicIpName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.name]",
             "publicIpDns": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.domainNameLabel]",
-            "publicIpResourceGroupName": "[steps('VirtualMachineConfig').publicIpAddress.resourceGroup]",
+            "publicIpResourceGroupName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.resourceGroup]",
             "publicIPAllocationMethod": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.publicIPAllocationMethod]",
             "publicIpSku": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.sku]",
 
