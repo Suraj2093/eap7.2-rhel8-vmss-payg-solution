@@ -49,10 +49,7 @@
             "type": "int",
             "metadata": {
                 "description": "Number of VM instances (less than 100)"
-            },
-            "maxValue": 99,
-            "minValue": 2,
-            "defaultValue": 2
+            }
         },
         "bootDiagnostics": {
             "defaultValue": "On",
