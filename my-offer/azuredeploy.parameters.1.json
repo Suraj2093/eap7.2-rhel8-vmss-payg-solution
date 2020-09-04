@@ -1,6 +1,6 @@
 {
   "location": {
-    "value": "eastus"
+    "value": "eastus2"
   },
   "vmssName": {
     "value": "jbosseap-rhel8-payg-vmss1"
@@ -18,7 +18,7 @@
     "value": "Standard_DS2_v2"
   },
   "instanceCount": {
-    "value": 2
+    "value": "2"
   },
   "virtualNetworkNewOrExisting": {
     "value": "new"
@@ -47,7 +47,7 @@
     "value": "jbosseap-rhel8-payg-vmss1-ip"
   },
   "publicIpDns": {
-    "value": "jbosseap-rhel8-payg-vmss1-c994ef93ed"
+    "value": "jbosseap-rhel8-payg-vmss1-6c23234d74"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
@@ -59,7 +59,7 @@
     "value": "new"
   },
   "storageAccountName": {
-    "value": "jbosseapfd5a4b227b"
+    "value": "jbosseap71ff21ebf8"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
