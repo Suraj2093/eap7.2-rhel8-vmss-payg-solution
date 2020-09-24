@@ -136,7 +136,7 @@
                         },
                         "defaultValue": {
                             "publicIpAddressName": "[concat(basics('vmssName'), '-ip')]",
-                            "domainNameLabel": "[concat(basics('vmssName'), '-', take(replace(guid(), '-', ''), 10))]"
+                            "domainNameLabel": "[concat(toLower(basics('vmssName')), '-', take(replace(guid(), '-', ''), 10))]"
                         },
                         "options": {
                             "hideExisting": false,
@@ -177,7 +177,7 @@
                         "visible": "[equals(steps('VirtualMachineScaleSetConfig').bootDiagnostics, 'On')]",
                         "defaultValue": {
                             "type": "Standard_LRS",
-                            "name": "[concat(take(replace(basics('vmssName'), '-', ''), 8), take(replace(guid(), '-', ''), 10))]"
+                            "name": "[concat(toLower(take(replace(basics('vmssName0'), '-', ''), 8)), take(replace(guid(), '-', ''), 10))]"
                         },
                         "constraints": {
                             "allowedTypes": [
