@@ -1,9 +1,9 @@
 {
   "location": {
-    "value": "eastus"
+    "value": "westus"
   },
   "vmssName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS1"
+    "value": "EAP72-RHEL8-PAYG-VMSS4"
   },
   "adminUsername": {
     "value": "demouser"
@@ -15,10 +15,10 @@
     "value": "demoPassword1!"
   },
   "vmSize": {
-    "value": "Standard_DS2_v2"
+    "value": "Standard_E2s_v3"
   },
   "instanceCount": {
-    "value": "2"
+    "value": "3"
   },
   "virtualNetworkNewOrExisting": {
     "value": "new"
@@ -28,41 +28,38 @@
   },
   "addressPrefixes": {
     "value": [
-      "10.3.0.0/16"
+      "10.6.0.0/16"
     ]
   },
   "subnetName": {
     "value": "Subnet-1"
   },
   "subnetPrefix": {
-    "value": "10.3.0.0/24"
+    "value": "10.6.0.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS-Rg1"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg4"
   },
   "publicIpNewOrExisting": {
-    "value": "new"
-  },
-  "publicIpName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS1-ip"
+    "value": "none"
   },
   "publicIpDns": {
-    "value": "eap72-rhel8-payg-vmss1-8ab2ff7516"
+    "value": ""
   },
   "publicIpResourceGroupName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS-Rg1"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg4"
   },
-  "publicIPAllocationMethod": {
-    "value": "Dynamic"
+  "publicIpSku": {
+    "value": "Basic"
   },
   "bootDiagnostics": {
     "value": "On"
   },
   "storageNewOrExisting": {
-    "value": "new"
+    "value": "existing"
   },
   "storageAccountName": {
-    "value": "eap72rhe3711a24018"
+    "value": "diagstrgeap73"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
