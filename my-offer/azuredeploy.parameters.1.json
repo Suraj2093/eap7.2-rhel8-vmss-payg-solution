@@ -1,9 +1,9 @@
 {
   "location": {
-    "value": "eastus"
+    "value": "westus"
   },
   "vmssName": {
-    "value": "jbosseap-rhel8-payg-vmss3"
+    "value": "EAP72-RHEL8-PAYG-VMSS3"
   },
   "adminUsername": {
     "value": "demouser"
@@ -15,57 +15,57 @@
     "value": "demoPassword1!"
   },
   "vmSize": {
-    "value": "Standard_F4s_v2"
+    "value": "Standard_DS2_v2"
   },
   "instanceCount": {
     "value": "3"
   },
   "virtualNetworkNewOrExisting": {
-    "value": "existing"
+    "value": "new"
   },
   "virtualNetworkName": {
-    "value": "EXT-RHEL8-VMSS-VNET1"
+    "value": "EAP72-RHEL8-payg-VNET3"
   },
   "addressPrefixes": {
     "value": [
-      "10.3.0.0/16"
+      "10.4.0.0/16"
     ]
   },
   "subnetName": {
-    "value": "EXT-RHEL8-VMSS-subnet1"
+    "value": "EAP72-RHEL8-payg-VNET3-subnet1"
   },
   "subnetPrefix": {
-    "value": "10.3.1.0/24"
+    "value": "10.4.2.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "Ext-strg-vnet-pip-Rg1"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg3"
   },
   "publicIpNewOrExisting": {
     "value": "existing"
   },
   "publicIpName": {
-    "value": "EXT-eap72-rhek8-vmss-pip1"
+    "value": "EAP73-RHEL8-VMSS-STD-pip1"
   },
   "publicIpDns": {
-    "value": "ext-eap72-rhek8-vmss-pip1"
+    "value": "eap73-rhel8-vmss-std-pip1"
   },
   "publicIpResourceGroupName": {
-    "value": "Ext-strg-vnet-pip-Rg1"
+    "value": "EXt-Resource-Rg1"
   },
   "publicIPAllocationMethod": {
-    "value": "Dynamic"
+    "value": "Static"
   },
   "publicIpSku": {
-    "value": "Basic"
+    "value": "Standard"
   },
   "bootDiagnostics": {
     "value": "On"
   },
   "storageNewOrExisting": {
-    "value": "existing"
+    "value": "new"
   },
   "storageAccountName": {
-    "value": "strgdiagvmss"
+    "value": "eap72rhelsubvmsms3"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
@@ -80,12 +80,12 @@
     "value": "demoPassword1!"
   },
   "rhsmUserName": {
-    "value": "surajpaispektra"
+    "value": "microsoftuser"
   },
   "rhsmPassword": {
-    "value": "Spektra@123"
+    "value": "Password@123"
   },
   "rhsmPoolEAP": {
-    "value": "8a85f99972762fce017299694421706b"
+    "value": "8a85f99c746e3964017478c9da14688c"
   }
 }
