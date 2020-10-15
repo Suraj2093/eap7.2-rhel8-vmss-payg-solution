@@ -84,6 +84,7 @@
             }
         },
         "storageAccountKind": {
+            "defaultValue": "Storage",
             "type": "String",
             "metadata": {
                 "description": "Storage account kind"
