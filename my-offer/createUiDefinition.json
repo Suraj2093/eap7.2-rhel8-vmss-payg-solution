@@ -85,7 +85,7 @@
                         "constraints": {
                             "required": true,
                             "regex": "^[1-9][0-9]{0,1}$",
-                            "validationMessage": "The VMSS instance count must be an integer value between 2 to 100."
+                            "validationMessage": "The VMSS instance count recommended value is between 2 to 100."
                         }
                     },
                     {
@@ -312,7 +312,7 @@
             "subnetPrefix": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.subnets.subnet1.addressPrefix]",
             "virtualNetworkResourceGroupName": "[steps('VirtualMachineScaleSetConfig').virtualNetwork.resourceGroup]",
 
-            "publicIpNewOrExisting": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.newOrExistingOrNone]",
+            "publicIpNewOrExistingOrNone": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.newOrExistingOrNone]",
             "publicIpName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.name]",
             "publicIpDns": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.domainNameLabel]",
             "publicIpResourceGroupName": "[steps('VirtualMachineScaleSetConfig').publicIpAddress.resourceGroup]",
@@ -323,6 +323,7 @@
             "storageNewOrExisting": "[steps('VirtualMachineScaleSetConfig').storageAccountType.newOrExisting]",
             "storageAccountName": "[steps('VirtualMachineScaleSetConfig').storageAccountType.name]",
             "storageAccountType": "[steps('VirtualMachineScaleSetConfig').storageAccountType.type]",
+            "storageAccountKind": "[steps('VirtualMachineScaleSetConfig').storageAccountType.kind]",
             "storageReplication": "[steps('VirtualMachineScaleSetConfig').storageReplication]",
             
             "jbossEAPUserName": "[steps('jbossEAPSettings').jbossEAPUserName]",

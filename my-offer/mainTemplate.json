@@ -83,6 +83,12 @@
                 "description": "Storage account type"
             }
         },
+        "storageAccountKind": {
+            "type": "String",
+            "metadata": {
+                "description": "Storage account kind"
+            }
+        },
         "storageReplication": {
             "type": "string",
             "defaultValue": "Standard_LRS",
@@ -141,7 +147,7 @@
                 "description": "Name of the resource group for the existing virtual network"
             }
         },
-        "publicIpNewOrExisting": {
+        "publicIpNewOrExistingOrNone": {
             "defaultValue": "new",
             "type": "String",
             "metadata": {
@@ -295,10 +301,10 @@
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
-            "kind": "Storage"
+            "kind": "[parameters('storageAccountKind')]"
         },
         {
-            "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
+            "condition": "[equals(parameters('publicIpNewOrExistingOrNone'), 'new')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2019-11-01",
             "name": "[parameters('publicIpName')]",
@@ -490,7 +496,7 @@
                 "name": "[parameters('publicIpSku')]"
             },
             "dependsOn": [
-                "[if(equals(parameters('publicIpNewOrExisting'),'none'), parameters('virtualNetworkName'), parameters('publicIpName'))]"
+                "[if(equals(parameters('publicIpNewOrExistingOrNone'),'none'), parameters('virtualNetworkName'), parameters('publicIpName'))]"
             ],
             "properties": {
                 "frontendIPConfigurations": [
@@ -498,8 +504,8 @@
                     "name": "[variables('frontendName')]",
                     "properties": {
                         "privateIPAllocationMethod": "Dynamic",
-                        "publicIPAddress": "[if(not(equals(parameters('publicIpNewOrExisting'), 'none')), variables('publicIpAddressId') , json('null'))]",
-                        "subnet": "[if(equals(parameters('publicIpNewOrExisting'), 'none'), variables('subnetId') , json('null'))]",
+                        "publicIPAddress": "[if(not(equals(parameters('publicIpNewOrExistingOrNone'), 'none')), variables('publicIpAddressId') , json('null'))]",
+                        "subnet": "[if(equals(parameters('publicIpNewOrExistingOrNone'), 'none'), variables('subnetId') , json('null'))]",
                         "privateIPAddressVersion": "IPv4"
                     }
  
