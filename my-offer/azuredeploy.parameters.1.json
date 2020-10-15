@@ -3,7 +3,7 @@
     "value": "eastus"
   },
   "vmssName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS1"
+    "value": "EAP72-RHEL8-PAYG-VMSS"
   },
   "adminUsername": {
     "value": "demouser"
@@ -38,22 +38,25 @@
     "value": "10.0.0.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg1"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg"
   },
   "publicIpNewOrExistingOrNone": {
     "value": "new"
   },
   "publicIpName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS1-ip"
+    "value": "EAP72-RHEL8-PAYG-VMSS-ip"
   },
   "publicIpDns": {
-    "value": "eap72-rhel8-payg-vmss1-78e98604c0"
+    "value": "eap72-rhel8-payg-vmss-f3039802b2"
   },
   "publicIpResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg1"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg"
   },
   "publicIPAllocationMethod": {
     "value": "Dynamic"
+  },
+  "publicIpSku": {
+    "value": "Basic"
   },
   "bootDiagnostics": {
     "value": "On"
@@ -62,10 +65,13 @@
     "value": "new"
   },
   "storageAccountName": {
-    "value": "eap72rhe5484fc10dd"
+    "value": "diageaprhellrsv2"
   },
   "storageAccountType": {
     "value": "Standard_LRS"
+  },
+  "storageAccountKind": {
+    "value": "StorageV2"
   },
   "storageReplication": {
     "value": "Standard_LRS"
@@ -74,7 +80,7 @@
     "value": "demouser1"
   },
   "jbossEAPPassword": {
-    "value": "demoPassword1&"
+    "value": "demoPassword1!"
   },
   "rhsmUserName": {
     "value": "Suraj@ss.com"
