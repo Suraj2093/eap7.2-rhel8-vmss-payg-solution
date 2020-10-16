@@ -3,19 +3,19 @@
     "value": "eastus"
   },
   "vmssName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS6"
+    "value": "EAP72-RHEL8-PAYG-VMSS"
   },
   "adminUsername": {
     "value": "demouser"
   },
   "authenticationType": {
-    "value": "sshPublicKey"
+    "value": "password"
   },
   "adminPasswordOrSSHKey": {
-    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAu+cF8JWPfccmG7RXWjPs2t/0euUpouv2n/8psu5wSnPcg1UW0KgvlmMlefdPec9m7tgC8yn5uL+t78E9SINmrr9R+M1eyXYdQTXTN0oZpUDSpHeOolueA9JgRlI2Y+/IO+4TuMCy3s8tPfvRY6TtUsJye2SNph+qyce6h0kfv5Rj+SKI4Xm1BtnyYc9BmerYHrUlj1EJ5nkISj4CahHuCHzhN64gyW75pOScE2xcCu1LaK/JThYkjO7EnkCmXV0WMqIVqv1Or0iJyjPfY+N7KmlCQe+eTRuQJifwC4DiH29p9Qib4ws4dOgF8zShA5tjXRRXAWzA0gYlN0gwn9u25Q=="
+    "value": "demoPassword1!"
   },
   "vmSize": {
-    "value": "Standard_F4s_v2"
+    "value": "Standard_DS2_v2"
   },
   "instanceCount": {
     "value": "2"
@@ -24,59 +24,71 @@
     "value": "new"
   },
   "virtualNetworkName": {
-    "value": "EAP72-RHEL8-payg-VMSS-VNET1"
+    "value": "VirtualNetwork"
   },
   "addressPrefixes": {
     "value": [
-      "10.5.0.0/16"
+      "10.0.0.0/16"
     ]
   },
   "subnetName": {
-    "value": "EAP72-RHEL8-payg-VMSS-subnet1"
+    "value": "Subnet-1"
   },
   "subnetPrefix": {
-    "value": "10.5.4.0/24"
+    "value": "10.0.0.0/24"
   },
   "virtualNetworkResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg6"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg"
   },
-  "publicIpNewOrExisting": {
+  "publicIpNewOrExistingOrNone": {
     "value": "new"
   },
   "publicIpName": {
-    "value": "EAP72-RHEL8-PAYG-VMSS6-STD-pip"
+    "value": "EAP72-RHEL8-PAYG-VMSS-ip"
   },
   "publicIpDns": {
-    "value": "eap72-rhel8-payg-vmss6-basicpip5sfj"
+    "value": "eap72-rhel8-payg-vmss-f3039802b2"
   },
   "publicIpResourceGroupName": {
-    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg6"
+    "value": "EAP72-RHEL8-payg-VMSS-Soln-Test-Rg"
   },
   "publicIPAllocationMethod": {
-    "value": "Static"
+    "value": "Dynamic"
   },
   "publicIpSku": {
-    "value": "Standard"
+    "value": "Basic"
   },
   "bootDiagnostics": {
-    "value": "Off"
+    "value": "On"
+  },
+  "storageNewOrExisting": {
+    "value": "new"
+  },
+  "storageAccountName": {
+    "value": "diageaprhellrsv2"
+  },
+  "storageAccountType": {
+    "value": "Standard_LRS"
+  },
+  "storageAccountKind": {
+    "value": "StorageV2"
   },
   "storageReplication": {
-    "value": "Standard_GRS"
+    "value": "Standard_LRS"
   },
   "jbossEAPUserName": {
     "value": "demouser1"
   },
   "jbossEAPPassword": {
-    "value": "demoPassword1&"
+    "value": "demoPassword1!"
   },
   "rhsmUserName": {
-    "value": "microsoftuser"
+    "value": "Suraj@ss.com"
   },
   "rhsmPassword": {
-    "value": "Password&123"
+    "value": "Spektra@123&"
   },
   "rhsmPoolEAP": {
-    "value": "8a85f99c746e3964017478c9da14688c"
+    "value": "8a85f99974d1005001751c968ffc1dc7"
   }
 }
